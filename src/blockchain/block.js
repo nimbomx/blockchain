@@ -6,6 +6,11 @@ class Block {
         this.data = data;
     }
 
+    static get genesis() {
+        const timestamp = (new Date(2000, 0, 1)).getTime();
+        return new this(timestamp, undefined, 'g3n3s1s-h4s4', 'genesis');
+    }
+
     toString() {
         const {
             timestamp, previousHash, hash, data,

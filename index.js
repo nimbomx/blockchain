@@ -5,5 +5,8 @@ const { name, version } = PKG;
 
 console.log(`${name} v${version}`);
 
-const block = new Block(Date.now(), 'pr3v10us-h4Sh', 'h4Sh', 'd4t4');
+const { genesis } = Block;
+console.log(genesis.toString());
+
+const block = new Block(Date.now(), genesis.hash, 'h4Sh', 'd4t4');
 console.log(block.toString());
