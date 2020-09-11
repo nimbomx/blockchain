@@ -6,7 +6,9 @@
   "scripts": {
     "start": "babel-node index.js",
     "nodemon": "nodemon --exec yarn start",
-    "lint": "eslint index.js src"
+    "lint": "eslint index.js src",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "author": "Ernesto Hernández",
   "license": "ISC",
@@ -17,9 +19,16 @@
     "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
+    "jest": "^26.4.2",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
     "crypto-js": "^4.0.0"
+  },
+  "jest":{
+    "silent": true,
+    "verbose": true,
+    "testEnvironment": "node"
+
   }
 }
