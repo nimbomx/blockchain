@@ -11,6 +11,13 @@ class Block {
         return new this(timestamp, undefined, 'g3n3s1s-h4s4', 'genesis');
     }
 
+    static mine(previousBlock, data){
+        const timestamp = Date.now();
+        const hash = 'HardCodedHash';
+        const { hash: previousHash } = previousBlock;
+
+        return new this(timestamp, previousHash,hash,data)
+    }
     toString() {
         const {
             timestamp, previousHash, hash, data,
