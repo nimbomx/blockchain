@@ -18,7 +18,7 @@ describe('validate()', () => {
 
         expect(() => {
             validate(blockchain.blocks);
-        }).toThrowError('Invalid genesis block.');
+        }).toThrowError('Invalid genesis block');
     });
     it('invalidates a chain with a corrupt previousHash within a block', () => {
         blockchain.addBlock('b10ck-1');
@@ -26,7 +26,7 @@ describe('validate()', () => {
 
         expect(() => {
             validate(blockchain.blocks);
-        }).toThrowError('Invalid previous hash.');
+        }).toThrowError('Invalid previous hash');
     });
     it('invalidates a chain with a corrupt hash within a block', () => {
         blockchain.addBlock('b10ck-1');
@@ -34,6 +34,6 @@ describe('validate()', () => {
 
         expect(() => {
             validate(blockchain.blocks);
-        }).toThrowError('Invalid hash.');
+        }).toThrowError('Invalid hash');
     });
 });

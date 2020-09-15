@@ -16,11 +16,11 @@ class Blockchain {
     }
 
     replace(newBlocks = []){
-        if (newBlocks.length < this.blocks.length) throw Error('Received chain is not longer than the current chain.');
+        if (newBlocks.length < this.blocks.length) throw Error('Received chain is not longer than the current chain');
         try {
             validate(newBlocks);
         } catch  (error) {
-            throw Error('Recieved chain is invalid');
+            throw Error('Received chain is invalid');
         }
         this.blocks = newBlocks;
 
