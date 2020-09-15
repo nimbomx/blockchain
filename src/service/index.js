@@ -12,7 +12,7 @@ const p2pService = new P2PService(blockchain);
 
 app.use(bodyParser.json());
 
-blockchain.addBlock('Express');
+//blockchain.addBlock('Express');
 app.get('/blocks', (req, res) => {
     res.json(blockchain.blocks);
 });
@@ -20,6 +20,8 @@ app.post('/mine', (req, res) => {
     const {body: {data}} = req;
     const block = blockchain.addBlock(data);
 
+    p2pService.sync();
+    
     res.json({
         blocks: blockchain.blocks.length,
         block

@@ -22,18 +22,29 @@ class P2PService {
     }
 
     onConnection(socket){
-        const {blockchain: {blocks}} =  this;
+        const {blockchain} =  this;
         console.log('[ws:socket] connected');
         this.sockets.push(socket);
 
         socket.on('message', message => {
             const {type,value} = JSON.parse(message);
+            try {
+                if(type === MESSAGE.BLOCKS) blockchain.replace(value);
+            }catch (error) {
+                console.log(`[ws:message] error ${error}`);
+            }
+
             console.log({type,value});
         })
         socket.send(JSON.stringify({
             type: MESSAGE.BLOCKS,
-            value: blocks
+            value: blockchain.blocks
         }));
+    }
+
+    sync(){
+        const {blockchain: {blocks}} = this;
+        this.broadcast(MESSAGE.BLOCKS, blocks);
     }
 
     broadcast(type, value){
